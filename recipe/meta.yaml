@@ -10,7 +10,7 @@ source:
   sha256: 57cae7ed138b3754c5d9ed3184cada45989c0a529a6eba3be28cc043a62bf3e9
 
 build:
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . -vv"
   skip: True  # [win]
 
@@ -26,6 +26,7 @@ requirements:
   run:
     - python
     - libpostal
+    - six
 test:
   imports:
     - postal
