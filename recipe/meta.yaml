@@ -30,6 +30,9 @@ requirements:
 test:
   imports:
     - postal
+    - postal.expand
+    - postal.parser
+    - postal.near_dupe
 
 about:
   home: https://github.com/openvenues/pypostal
