@@ -13,19 +13,21 @@ source:
   sha256: 2158fde6872d57c342b384ca1d0eadd562dc466a8a36f1160919e8189864b1b1
 
 build:
-  number: 5
+  number: 6
   skip: win
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
   host:
     - python
     - pip
     - nose
     - six
     - libpostal
+    - setuptools
   run:
     - python
     - libpostal
