@@ -1,50 +1,56 @@
-{% set name = "postal" %}
-{% set version = "1.1.9" %}
+schema_version: 1
+
+context:
+  name: postal
+  version: 1.1.9
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 2158fde6872d57c342b384ca1d0eadd562dc466a8a36f1160919e8189864b1b1
 
 build:
-  number: 5
-  script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win]
+  number: 6
+  skip: win
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
   host:
     - python
     - pip
     - nose
     - six
     - libpostal
+    - setuptools
   run:
     - python
     - libpostal
     - six
-test:
-  imports:
-    - postal
-    - postal.expand
-    - postal.parser
-    - postal.near_dupe
+
+tests:
+  - python:
+      imports:
+        - postal
+        - postal.expand
+        - postal.parser
+        - postal.near_dupe
 
 about:
-  home: https://github.com/openvenues/pypostal
   license: MIT
-  license_family: MIT
   license_file: LICENSE
   summary: Python bindings to libpostal for fast international address parsing/normalization
   description: |
     The official Python bindings to libpostal,
     a fast statistical parser/normalizer for street
     addresses anywhere in the world.
-  dev_url: https://github.com/openvenues/pypostal
+  homepage: https://github.com/openvenues/pypostal
+  repository: https://github.com/openvenues/pypostal
 
 extra:
   recipe-maintainers:
