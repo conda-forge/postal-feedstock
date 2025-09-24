@@ -30,11 +30,11 @@ requirements:
     - pip
     - nose
     - six
-    - libpostal
+    - libpostal>=1.1.3
     - setuptools
   run:
     - python
-    - libpostal
+    - libpostal>=1.1.3
     - six
 
 tests:
