@@ -283,4 +283,5 @@ Feedstock Maintainers
 =====================
 
 * [@MichaelMarien](https://github.com/MichaelMarien/)
+* [@jsmolic](https://github.com/jsmolic/)
 
